@@ -1,3 +1,0 @@
-CI_ENVIRONMENT = development
-
-app.baseURL = ''

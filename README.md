@@ -4,6 +4,7 @@ A basic Point-of-Sale (POS) web application built with **CodeIgniter 4** and **P
 
 ## Pages
 
+
 | Page | Route | Description |
 |------|-------|-------------|
 | Home | `/` | Landing page with system overview and feature highlights |
