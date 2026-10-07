@@ -166,6 +166,16 @@ function handleNew() {
             </div>
 
             <div class="form-group">
+                <label for="password" class="form-label">Password <span class="required">*</span></label>
+                <input type="password" id="password" name="password"
+                       class="form-input <?= isset($errors['password']) ? 'input-error' : '' ?>"
+                       placeholder="Minimum 6 characters" required>
+                <?php if (isset($errors['password'])): ?>
+                    <p class="error-text"><?= esc($errors['password']) ?></p>
+                <?php endif; ?>
+            </div>
+
+            <div class="form-group">
                 <label for="full_name" class="form-label">Full Name <span class="required">*</span></label>
                 <input type="text" id="full_name" name="full_name"
                        class="form-input <?= isset($errors['full_name']) ? 'input-error' : '' ?>"
@@ -207,6 +217,7 @@ function handleCreate() {
     global $conn;
 
     $username  = trim($_POST['username'] ?? '');
+    $password  = $_POST['password'] ?? '';
     $full_name = trim($_POST['full_name'] ?? '');
     $role      = trim($_POST['role'] ?? 'Staff');
     $errors    = [];
@@ -233,6 +244,12 @@ function handleCreate() {
         $errors['full_name'] = 'Full name must be between 2 and 100 characters.';
     }
 
+    if (empty($password)) {
+        $errors['password'] = 'Password is required.';
+    } elseif (strlen($password) < 6) {
+        $errors['password'] = 'Password must be at least 6 characters.';
+    }
+
     $validRoles = ['Admin', 'Manager', 'Cashier', 'Staff'];
     if (!in_array($role, $validRoles)) {
         $errors['role'] = 'Invalid role selected.';
@@ -245,8 +262,9 @@ function handleCreate() {
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO users (username, full_name, role, created_at) VALUES (?, ?, ?, NOW())");
-    $stmt->bind_param('sss', $username, $full_name, $role);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $stmt = $conn->prepare("INSERT INTO users (username, password, full_name, role, created_at) VALUES (?, ?, ?, ?, NOW())");
+    $stmt->bind_param('ssss', $username, $hashedPassword, $full_name, $role);
     $stmt->execute();
     $stmt->close();
 

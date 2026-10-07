@@ -49,6 +49,7 @@ INSERT INTO `customers` (`id`, `full_name`, `email`, `phone`, `created_at`) VALU
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `role` varchar(20) NOT NULL DEFAULT 'Staff',
   `avatar` varchar(255) DEFAULT NULL,
@@ -57,14 +58,15 @@ CREATE TABLE `users` (
 
 --
 -- Dumping data for table `users`
+-- Default password for all users: password123
 --
 
-INSERT INTO `users` (`id`, `username`, `full_name`, `role`, `avatar`, `created_at`) VALUES
-(1, 'admin_jose', 'Jose Andres Mendoza', 'Admin', NULL, '2025-01-01 08:00:00'),
-(2, 'mgr_carmela', 'Carmela Rose Villanueva', 'Manager', NULL, '2025-01-15 09:30:00'),
-(3, 'cash_diego', 'Diego Martin Flores', 'Cashier', NULL, '2025-02-01 10:00:00'),
-(4, 'cash_liza', 'Liza Mae Aquino', 'Cashier', NULL, '2025-02-15 11:00:00'),
-(5, 'staff_marco', 'Marco Antonio Bautista', 'Staff', NULL, '2025-03-01 08:30:00');
+INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `role`, `avatar`, `created_at`) VALUES
+(1, 'admin_jose', '$2y$10$bVjyKhnp.Jb5hMHmYEbjeuoTUblKOWz/UHj2gq8fZ/2WRaC1NXgvO', 'Jose Andres Mendoza', 'Admin', NULL, '2025-01-01 08:00:00'),
+(2, 'mgr_carmela', '$2y$10$bVjyKhnp.Jb5hMHmYEbjeuoTUblKOWz/UHj2gq8fZ/2WRaC1NXgvO', 'Carmela Rose Villanueva', 'Manager', NULL, '2025-01-15 09:30:00'),
+(3, 'cash_diego', '$2y$10$bVjyKhnp.Jb5hMHmYEbjeuoTUblKOWz/UHj2gq8fZ/2WRaC1NXgvO', 'Diego Martin Flores', 'Cashier', NULL, '2025-02-01 10:00:00'),
+(4, 'cash_liza', '$2y$10$bVjyKhnp.Jb5hMHmYEbjeuoTUblKOWz/UHj2gq8fZ/2WRaC1NXgvO', 'Liza Mae Aquino', 'Cashier', NULL, '2025-02-15 11:00:00'),
+(5, 'staff_marco', '$2y$10$bVjyKhnp.Jb5hMHmYEbjeuoTUblKOWz/UHj2gq8fZ/2WRaC1NXgvO', 'Marco Antonio Bautista', 'Staff', NULL, '2025-03-01 08:30:00');
 
 --
 -- Indexes for dumped tables
