@@ -175,7 +175,7 @@ function handleLogin() {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= url('style.css') ?>">
+    <link rel="stylesheet" href="<?= url('style.css?v=1.1') ?>">
 </head>
 <body>
     <div class="login-page">
@@ -332,7 +332,7 @@ function renderLayout($title, $activeNav, $content) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= url('style.css') ?>">
+    <link rel="stylesheet" href="<?= url('style.css?v=1.1') ?>">
 </head>
 <body>
     <nav class="navbar" id="main-navbar">
